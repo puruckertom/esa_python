@@ -1,0 +1,108 @@
+\documentclass{beamer}
+
+\usetheme{default}
+\beamertemplatenavigationsymbolsempty
+
+%http://mikedewar.wordpress.com/2009/02/25/latex-beamer-python-beauty/
+\definecolor{fore}{RGB}{249,242,215}
+%{249,242,215}
+\definecolor{back}{RGB}{51,51,51}
+%{RGB}{51,51,51}
+\definecolor{title}{RGB}{230,96,6}
+%{255,0,90}
+%http://meyerweb.com/eric/tools/color-blend/
+%http://www.census.gov/population/international/data/worldpop/table_population.php
+\setbeamercolor{titlelike}{fg=title}
+\setbeamercolor{normal text}{fg=fore,bg=back}
+
+\useinnertheme{rectangles}
+\definecolor{UniBlue}{RGB}{34,139,34}
+\setbeamercolor*{item}{fg=UniBlue}
+
+\usepackage{colortbl}
+\usepackage{caption}
+\usepackage{listings,bera}
+\usepackage{lipsum}
+\newcommand\Fontvi{\fontsize{6}{7.2}\selectfont}
+\newcommand\Fontvii{\fontsize{7}{7.5}\selectfont}
+\newcommand\Fontviii{\fontsize{8}{7.8}\selectfont}
+\newcommand\Fontix{\fontsize{9}{8.3}\selectfont}
+\definecolor{keywords}{RGB}{255,102,0}
+%{255,0,90}
+\definecolor{comments}{RGB}{51,153,204}
+%\definecolor{comments}{RGB}{83,121,170}
+\setbeamertemplate{caption}[numbered]
+%\useoutertheme{infolines}
+\lstset{language=Python,
+keywordstyle=\color{keywords},
+commentstyle=\color{comments}\emph}
+
+%\logo{epa-logo-full.jpg}
+
+%example table
+%\begin{frame}[fragile]
+%\frametitle{Basic math operations}
+%\begin{center}
+%\begin{tabular}{lc} \hline
+%\rowcolor{UniBlue!100}col1 & col2 \\ \hline \hline
+%\rowcolor{UniBlue!75}3 & 3 \\ \hline
+%\rowcolor{UniBlue!90}3 & 3 \\ \hline
+%\rowcolor{UniBlue!75}3 & 3 \\ \hline
+%\rowcolor{UniBlue!90}3 & 3 \\ \hline
+%\end{tabular}
+%\end{center}
+
+% items enclosed in square brackets are optional; explanation below
+\title[Title1]{Generic}
+\subtitle[Title2]{Python for Ecologists}
+\author[etal]{Tom Purucker, Tao Hong, Chance Pascale}
+\institute[EPA]{
+  Ecological Society of America Workshop\\
+  Portland, OR\\[1ex]
+  \texttt{purucker.tom@gmail.com}
+}
+
+\begin{document}
+
+%--- the titlepage frame -------------------------%
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+%\begin{frame}
+%\frametitle{Frame with reduced font size}
+%\Fontvi
+%\lipsum[1]
+%\end{frame}
+
+%\begin{frame}
+%\frametitle{Frame with regular font size}
+%\lipsum[1]
+%\end{frame}
+
+%\begin{frame}[fragile]
+%\frametitle{Generic slide}
+%\begin{itemize}
+%\item thing 1  
+%\item thing 2 
+%\item thing 3 
+%\item thing 4
+%\end{itemize} 
+%\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Python for Ecologists}
+\begin{itemize}
+  \item Assuming not much programming experience
+  \item Immersion approach 
+\begin{itemize}
+  \item Short lecture on Python topic
+  \item Hands-on Python exercises 
+  \item Rinse \& repeat
+\end{itemize}
+  \item Will use ecological examples as much as possible
+\end{itemize} 
+\end{frame}
+
+
+\end{document}

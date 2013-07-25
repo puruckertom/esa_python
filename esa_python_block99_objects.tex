@@ -1,0 +1,118 @@
+\documentclass{beamer}
+
+\usetheme{default}
+\beamertemplatenavigationsymbolsempty
+
+%http://mikedewar.wordpress.com/2009/02/25/latex-beamer-python-beauty/
+\definecolor{fore}{RGB}{249,242,215}
+%{249,242,215}
+\definecolor{back}{RGB}{51,51,51}
+%{RGB}{51,51,51}
+\definecolor{title}{RGB}{230,96,6}
+%{255,0,90}
+%http://meyerweb.com/eric/tools/color-blend/
+%http://www.census.gov/population/international/data/worldpop/table_population.php
+\setbeamercolor{titlelike}{fg=title}
+\setbeamercolor{normal text}{fg=fore,bg=back}
+
+\useinnertheme{rectangles}
+\definecolor{UniBlue}{RGB}{34,139,34}
+\setbeamercolor*{item}{fg=UniBlue}
+
+\usepackage{caption}
+\usepackage{listings,bera}
+\usepackage{lipsum}
+\newcommand\Fontvi{\fontsize{6}{7.2}\selectfont}
+\newcommand\Fontvii{\fontsize{7}{7.5}\selectfont}
+\newcommand\Fontviii{\fontsize{8}{7.8}\selectfont}
+\newcommand\Fontix{\fontsize{9}{8.3}\selectfont}
+\definecolor{keywords}{RGB}{255,102,0}
+%{255,0,90}
+\definecolor{comments}{RGB}{51,153,204}
+%\definecolor{comments}{RGB}{83,121,170}
+\setbeamertemplate{caption}[numbered]
+%\useoutertheme{infolines}
+\lstset{language=Python,
+keywordstyle=\color{keywords},
+commentstyle=\color{comments}\emph}
+
+%\logo{epa-logo-full.jpg}
+
+\begin{document}
+
+%\begin{frame}
+%\frametitle{Frame with reduced font size}
+%\Fontvi
+%\lipsum[1]
+%\end{frame}
+
+%\begin{frame}
+%\frametitle{Frame with regular font size}
+%\lipsum[1]
+%\end{frame}
+
+%\begin{frame}[fragile]
+%\frametitle{Generic slide}
+%\begin{itemize}
+%\item thing 1  
+%\item thing 2 
+%\item thing 3 
+%\item thing 4
+%\end{itemize} 
+%\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Python objects}
+\begin{itemize}
+\item Everything in Python is an object with these properties
+\begin{enumerate}  
+  \item an identity (id) 
+  \item a type (type)
+  \item a value (mutable or immutable)
+\end{enumerate}
+\end{itemize} 
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Each Python object has an id}
+\begin{lstlisting}
+>>> n_predators = 12
+>>> id(n_predators)
+4298191056
+\end{lstlisting} 
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Each Python object has a type}
+\begin{lstlisting}
+>>> n_predators = 12
+>>> type(n_predators)
+<type 'int'>
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Each Python object has a value}
+\begin{itemize}
+\item String, integer, and tuple object values are \emph{immutable}
+\begin{lstlisting}
+>>> n_prey = 88
+>>> id(n_prey)
+4298193184
+>>> n_prey = 96
+>>> id(n_prey)
+4298192992 # id for n_prey has changed
+\end{lstlisting}
+\item Dictionary and list items are \emph{mutable}
+\begin{lstlisting}
+>>> birds = ["cardinal", "oriole"]
+>>> id(birds)
+4332756000
+>>> birds.append("gnatcatcher")
+>>> id(birds)
+4332756000 # id is still the same
+\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+\end{document}

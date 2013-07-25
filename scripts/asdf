@@ -1,0 +1,2 @@
+for thing in some_list :
+    print thing

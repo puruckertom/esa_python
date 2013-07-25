@@ -1,0 +1,250 @@
+\documentclass{beamer}
+\usepackage{handoutWithNotes}
+\pgfpagesuselayout{4 on 1 with notes}[a4paper,border shrink=5mm]
+
+\usetheme{default}
+\beamertemplatenavigationsymbolsempty
+
+%http://mikedewar.wordpress.com/2009/02/25/latex-beamer-python-beauty/
+%\definecolor{fore}{RGB}{249,242,215}
+\definecolor{fore}{RGB}{51,51,51}
+%{249,242,215}
+%\definecolor{back}{RGB}{51,51,51}
+\definecolor{back}{RGB}{249,242,215}
+%{RGB}{51,51,51}
+\definecolor{title}{RGB}{230,96,6}
+%{255,0,90}
+%http://meyerweb.com/eric/tools/color-blend/
+%http://www.census.gov/population/international/data/worldpop/table_population.php
+\setbeamercolor{titlelike}{fg=title}
+\setbeamercolor{normal text}{fg=fore,bg=back}
+
+\useinnertheme{rectangles}
+\definecolor{UniBlue}{RGB}{34,139,34}
+\setbeamercolor*{item}{fg=UniBlue}
+
+\usepackage{colortbl}
+\usepackage{caption}
+\usepackage{listings,bera}
+\usepackage{lipsum}
+\newcommand\Fontv{\fontsize{5}{6.2}\selectfont}
+\newcommand\Fontvi{\fontsize{6}{7.2}\selectfont}
+\newcommand\Fontvii{\fontsize{7}{7.5}\selectfont}
+\newcommand\Fontviii{\fontsize{8}{8.1}\selectfont}
+\newcommand\Fontix{\fontsize{9}{8.3}\selectfont}
+\definecolor{keywords}{RGB}{255,102,0}
+%{255,0,90}
+\definecolor{comments}{RGB}{51,153,204}
+%\definecolor{comments}{RGB}{83,121,170}
+\setbeamertemplate{caption}[numbered]
+%\useoutertheme{infolines}
+\lstset{language=Python,
+keywordstyle=\color{keywords},
+commentstyle=\color{comments}\emph}
+
+%\logo{epa-logo-full.jpg}
+
+%example table
+%\begin{frame}[fragile]
+%\frametitle{Basic math operations}
+%\begin{center}
+%\begin{tabular}{lc} \hline
+%\rowcolor{UniBlue!100}col1 & col2 \\ \hline \hline
+%\rowcolor{UniBlue!75}3 & 3 \\ \hline
+%\rowcolor{UniBlue!90}3 & 3 \\ \hline
+%\rowcolor{UniBlue!75}3 & 3 \\ \hline
+%\rowcolor{UniBlue!90}3 & 3 \\ \hline
+%\end{tabular}
+%\end{center}
+
+% items enclosed in square brackets are optional; explanation below
+\title[Title1]{Strings}
+\subtitle[Title2]{Python for Ecologists}
+\author[etal]{Tom Purucker, Tao Hong, Chance Pascale}
+\institute[EPA]{
+  Ecological Society of America Workshop\\
+  Portland, OR\\[1ex]
+  \texttt{purucker.tom@gmail.com}
+}
+
+\begin{document}
+
+%--- the titlepage frame -------------------------%
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+%\begin{frame}
+%\frametitle{Frame with reduced font size}
+%\Fontvi
+%\lipsum[1]
+%\end{frame}
+
+%\begin{frame}
+%\frametitle{Frame with regular font size}
+%\lipsum[1]
+%\end{frame}
+
+%\begin{frame}[fragile]
+%\frametitle{Generic slide}
+%\begin{itemize}
+%\item thing 1  
+%\item thing 2 
+%\item thing 3 
+%\item thing 4
+%\end{itemize} 
+%\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Accessing documentation in Python}
+\begin{itemize}
+  \item Use dir() and help() commands to access documentation
+\begin{lstlisting}
+import sys
+dir(sys)
+help(sys)
+help(sys.argv)
+help(str)
+dir(str)
+help(len)
+\end{lstlisting} 
+\item or just Google it -- \href{http://www.google.com/webhp?sourceid=chrome-instant&ie=UTF-8#hl=en&output=search&sclient=psy-ab&q=python\%20len&oq=&gs_l=&pbx=1&fp=175fca51e4ec0d4b&bav=on.2,or.r_gc.r_pw.r_qf.&biw=1292&bih=806}{'python len'}
+\end{itemize} 
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{dunder methods}
+\begin{itemize}
+\item "dunder" is short for double underline, e.g., \_\_init\_\_ 
+\item also known as special or magic methods 
+\item + means different things for numbers and for strings
+\begin{lstlisting}
+3 + 5
+"Hello " + "world"
+\end{lstlisting}
+\item \_\_add\_\_ for each type handles the different cases
+\end{itemize} 
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{len v len()}
+\begin{itemize}
+\item len - refers to the object 
+\begin{lstlisting}
+help(len)
+\end{lstlisting}
+\item len() calls the function with a supplied argument
+\begin{lstlisting}
+len('Geospiza magnirostris')
+\end{lstlisting}
+\end{itemize} 
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Single and Double quotes}
+\begin{itemize}
+\item No preference between single and double quotes
+\begin{lstlisting}
+aint = "ain't"
+aint = 'ain"t'
+\end{lstlisting}
+\end{itemize} 
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Strings}
+\Fontix
+\begin{itemize}
+\item Defining a string - single quote
+\begin{lstlisting}
+darwins_finch = 'Geospiza magnirostris'
+darwins_finch
+\end{lstlisting}
+\item Quoting within the string - double quote
+\begin{lstlisting}
+darwin_quote ="'Great is the power of steady misrepresentation'"
+darwin_quote
+darwin_quote.lower()
+darwin_quote[13:18]
+darwin_quote[0] #Python is zero-based
+\end{lstlisting}
+\item #Slicing strings- extracts up to, but not including the second index
+\begin{lstlisting}
+darwin_quote[0:1] 
+darwin_quote[0:6]
+darwin_quote[:12]
+darwin_quote[12:]
+darwin_quote[:12] + darwin_quote[12:]
+\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Multi-line strings}
+\Fontix
+\begin{itemize}
+\item Multiline strings - triple quote
+\begin{lstlisting}
+long_darwin_quote = '''There is grandeur in this view
+of life, with its several powers, having been originally 
+breathed into a few forms or into one; and that, whilst 
+this planet has gone cycling on according to the fixed 
+law of gravity, from so simple a beginning endless 
+forms most beautiful and most wonderful have been, and 
+are being, evolved.'''
+long_darwin_quote
+print(long_darwin_quote)
+len(long_darwin_quote)
+\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{C-like string formatting}
+\begin{lstlisting}
+>>> "%s %s" % ('Hello','Portland')
+'Hello Portland'
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Exercise 2- Run the script exer02\_strings.py}
+\Fontvi
+\begin{lstlisting}
+class TestStrings(unittest.TestCase):
+    def test_strings(self):
+        # Create the variable ``hola`` and assign 'hello world'
+        #**************************************************
+
+        self.assertEqual(hola, """hello world""")
+        self.assert_(isinstance(hola, str))
+
+        # Create a string, ``hola2`` that equals ``hola`` multiplied by 2
+        #**************************************************
+
+        self.assertEqual(hola2, 'hello worldhello world')
+.
+        # Create a triple quoted string
+        # ``darwin_quote2`` that has the following content:
+        # Darwin said, "There is grandeur in this view of things."
+        #**************************************************
+
+        self.assertEqual(darwin_quote2, 'Darwin said, "There is grandeur in this view of things."')
+
+        # Assign the method names of a string to a variable ``string_methods``
+        # use ``dir()`` to list them
+        #**************************************************
+
+        self.assertEqual(string_methods, ['__add__', ...])
+
+        # Create a variable where_is_gra that has holds the index of the
+        # substring "gra" in the string darwin_quote2.  (Find a string method to
+        # figure it out)
+        #**************************************************
+
+        self.assertEqual(where_is_gra, 23)
+
+\end{lstlisting}
+\end{frame}
+
+\end{document}

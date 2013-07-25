@@ -1,0 +1,5 @@
+#!/usr/bin/env python
+# the above line invokes Python 
+# save this in a text file as hello
+print "Hello world!"
+# we can run this with simply ./hello

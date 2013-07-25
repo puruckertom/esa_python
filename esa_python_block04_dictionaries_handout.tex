@@ -1,0 +1,161 @@
+\documentclass{beamer}
+\usepackage{handoutWithNotes}
+\pgfpagesuselayout{4 on 1 with notes}[a4paper,border shrink=5mm]
+
+\usetheme{default}
+\beamertemplatenavigationsymbolsempty
+
+%http://mikedewar.wordpress.com/2009/02/25/latex-beamer-python-beauty/
+%\definecolor{fore}{RGB}{249,242,215}
+\definecolor{fore}{RGB}{51,51,51}
+%{249,242,215}
+%\definecolor{back}{RGB}{51,51,51}
+\definecolor{back}{RGB}{249,242,215}
+%{RGB}{51,51,51}
+\definecolor{title}{RGB}{230,96,6}
+%{255,0,90}
+%http://meyerweb.com/eric/tools/color-blend/
+%http://www.census.gov/population/international/data/worldpop/table_population.php
+\setbeamercolor{titlelike}{fg=title}
+\setbeamercolor{normal text}{fg=fore,bg=back}
+
+\useinnertheme{rectangles}
+\definecolor{UniBlue}{RGB}{34,139,34}
+\setbeamercolor*{item}{fg=UniBlue}
+
+\usepackage{colortbl}
+\usepackage{caption}
+\usepackage{listings,bera}
+\usepackage{lipsum}
+\newcommand\Fontvi{\fontsize{6}{7.2}\selectfont}
+\newcommand\Fontvii{\fontsize{7}{7.5}\selectfont}
+\newcommand\Fontviii{\fontsize{8}{7.8}\selectfont}
+\newcommand\Fontix{\fontsize{9}{8.3}\selectfont}
+\definecolor{keywords}{RGB}{255,102,0}
+%{255,0,90}
+\definecolor{comments}{RGB}{51,153,204}
+%\definecolor{comments}{RGB}{83,121,170}
+\setbeamertemplate{caption}[numbered]
+%\useoutertheme{infolines}
+\lstset{language=Python,
+keywordstyle=\color{keywords},
+commentstyle=\color{comments}\emph}
+
+%\logo{epa-logo-full.jpg}
+
+%example table
+%\begin{frame}[fragile]
+%\frametitle{Basic math operations}
+%\begin{center}
+%\begin{tabular}{lc} \hline
+%\rowcolor{UniBlue!100}col1 & col2 \\ \hline \hline
+%\rowcolor{UniBlue!75}3 & 3 \\ \hline
+%\rowcolor{UniBlue!90}3 & 3 \\ \hline
+%\rowcolor{UniBlue!75}3 & 3 \\ \hline
+%\rowcolor{UniBlue!90}3 & 3 \\ \hline
+%\end{tabular}
+%\end{center}
+
+% items enclosed in square brackets are optional; explanation below
+\title[Title1]{Dictionaries}
+\subtitle[Title2]{Python for Ecologists}
+\author[etal]{Tao Hong, Chance Pascale, Tom Purucker}
+\institute[EPA]{
+  Ecological Society of America Workshop\\
+  Portland, OR\\[1ex]
+  \texttt{purucker.tom@gmail.com}
+}
+
+\begin{document}
+
+%--- the titlepage frame -------------------------%
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+%\begin{frame}
+%\frametitle{Frame with reduced font size}
+%\Fontvi
+%\lipsum[1]
+%\end{frame}
+
+%\begin{frame}
+%\frametitle{Frame with regular font size}
+%\lipsum[1]
+%\end{frame}
+
+%\begin{frame}[fragile]
+%\frametitle{Generic slide}
+%\begin{itemize}
+%\item thing 1  
+%\item thing 2 
+%\item thing 3 
+%\item thing 4
+%\end{itemize} 
+%\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Dictionaries}
+\begin{itemize}
+  \item Also known as associative arrays or hashmaps
+  \item {key:value}
+  \item Are mutable, like lists
+  \item Unlike lists, index can be something other than an integer 
+  \item Lists keep order, dictionaries don't
+  \item Can be very efficient for searching and for table lookups
+  \begin{lstlisting}
+    bw_grams = {}
+    bw_grams['Spring peeper'] = 4
+    bw_grams['Bullfrog'] = 500
+    bw_grams['Cane toad'] = 1800
+    print bw_grams['Bullfrog']
+  \end{lstlisting} 
+\end{itemize} 
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Setting keys and values}
+\begin{lstlisting}
+print bw_grams['Barking treefrog']
+'Barking treefrog' in bw_grams
+print bw_grams.get('Barking treefrog', 'Not found')
+# setting a default value for a key
+if 'Barking treefrog' not in bw_grams:
+  bw_grams['Barking treefrog'] = 80
+# another way to set a a value for key
+bw_grams.setdefault('Barking treefrog', 80) 
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Mixing types}
+\begin{itemize}
+\item Can be used to track properties of individuals in an individual-based model
+\begin{lstlisting}
+male43 = {"sp":"Orca", "bw":10., "status":"suscept"}
+male43["status"] = "infected"
+male43
+\end{lstlisting}
+\item Dictionary name (e.g., male43) can be nested and itself be a key
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Using variables to map dictionaries}
+\begin{lstlisting}
+bw_grams = {}
+frog = ''
+weight = ''
+
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Deleting a key}
+\begin{lstlisting}
+del bw_grams['infected']
+
+\end{lstlisting}
+\end{frame}
+
+\end{document}

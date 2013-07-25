@@ -1,0 +1,170 @@
+\documentclass{beamer}
+\usepackage{handoutWithNotes}
+\pgfpagesuselayout{4 on 1 with notes}[a4paper,border shrink=5mm]
+
+\usetheme{default}
+\beamertemplatenavigationsymbolsempty
+
+%http://mikedewar.wordpress.com/2009/02/25/latex-beamer-python-beauty/
+%\definecolor{fore}{RGB}{249,242,215}
+\definecolor{fore}{RGB}{51,51,51}
+%{249,242,215}
+%\definecolor{back}{RGB}{51,51,51}
+\definecolor{back}{RGB}{249,242,215}
+%{RGB}{51,51,51}
+\definecolor{title}{RGB}{230,96,6}
+%{255,0,90}
+%http://meyerweb.com/eric/tools/color-blend/
+%http://www.census.gov/population/international/data/worldpop/table_population.php
+\setbeamercolor{titlelike}{fg=title}
+\setbeamercolor{normal text}{fg=fore,bg=back}
+
+\useinnertheme{rectangles}
+\definecolor{UniBlue}{RGB}{34,139,34}
+\setbeamercolor*{item}{fg=UniBlue}
+
+\usepackage{colortbl}
+\usepackage{caption}
+\usepackage{listings,bera}
+\usepackage{lipsum}
+\newcommand\Fontvi{\fontsize{6}{7.2}\selectfont}
+\newcommand\Fontvii{\fontsize{7}{7.5}\selectfont}
+\newcommand\Fontviii{\fontsize{8}{7.8}\selectfont}
+\newcommand\Fontix{\fontsize{9}{8.3}\selectfont}
+\definecolor{keywords}{RGB}{255,102,0}
+%{255,0,90}
+\definecolor{comments}{RGB}{51,153,204}
+%\definecolor{comments}{RGB}{83,121,170}
+\setbeamertemplate{caption}[numbered]
+%\useoutertheme{infolines}
+\lstset{language=Python,
+keywordstyle=\color{keywords},
+commentstyle=\color{comments}\emph}
+
+%\logo{epa-logo-full.jpg}
+
+%example table
+%\begin{frame}[fragile]
+%\frametitle{Basic math operations}
+%\begin{center}
+%\begin{tabular}{lc} \hline
+%\rowcolor{UniBlue!100}col1 & col2 \\ \hline \hline
+%\rowcolor{UniBlue!75}3 & 3 \\ \hline
+%\rowcolor{UniBlue!90}3 & 3 \\ \hline
+%\rowcolor{UniBlue!75}3 & 3 \\ \hline
+%\rowcolor{UniBlue!90}3 & 3 \\ \hline
+%\end{tabular}
+%\end{center}
+
+% items enclosed in square brackets are optional; explanation below
+\title[Title1]{Loops}
+\subtitle[Title2]{Python for Ecologists}
+\author[etal]{Chance Pascale, Tom Purucker, Tao Hong}
+\institute[EPA]{
+  Ecological Society of America Workshop\\
+  Portland, OR\\[1ex]
+  \texttt{purucker.tom@gmail.com}
+}
+
+\begin{document}
+
+%--- the titlepage frame -------------------------%
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+%\begin{frame}
+%\frametitle{Frame with reduced font size}
+%\Fontvi
+%\lipsum[1]
+%\end{frame}
+
+%\begin{frame}
+%\frametitle{Frame with regular font size}
+%\lipsum[1]
+%\end{frame}
+
+%\begin{frame}[fragile]
+%\frametitle{Generic slide}
+%\begin{itemize}
+%\item thing 1  
+%\item thing 2 
+%\item thing 3 
+%\item thing 4
+%\end{itemize} 
+%\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Conditionals}
+\begin{itemize}
+\item whitespace is very important, determines the close
+\end{itemize}
+\begin{lstlisting}
+if grade >= 90:
+  print "A"
+elif grade >= 80:
+  print "B"
+elif grade >= 70:
+  print "C"
+elif grade >= 60:
+  print "D"
+else:
+  print "F"  
+\end{lstlisting} 
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Booleans}
+\begin{lstlisting}
+cloudy = True
+rainy = False
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Loop iteration}
+\begin{lstlisting}
+# through a list of numbers
+for value in [1,2,3,4,5,6,7]:
+  print value
+# using range
+for value in range(1,8):
+ print value
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{enumeration}
+\begin{lstlisting}
+# through a list of strings with indices
+watersheds = ["Suwanne", "Oconee", "Tennessee", "Flint"]
+for index, value in enumerate(watersheds):
+  print index, value
+# can also loop through dictionaries
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{break, continue, and pass}
+\begin{lstlisting}
+# using break
+for number in range(1,8):
+ if number < 5:
+   print number
+ else:
+     break
+# using continue
+for number in range(1,8):
+ if number < 5:
+   print number
+   continue
+# pass
+for number in range(1,8):
+  if number < 5:
+    print number
+  else:
+    pass
+\end{lstlisting}
+\end{frame}
+
+\end{document}

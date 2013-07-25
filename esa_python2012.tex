@@ -1,0 +1,93 @@
+\documentclass{beamer}
+
+\usetheme{default}
+\beamertemplatenavigationsymbolsempty
+
+\definecolor{fore}{RGB}{249,242,215}
+%{249,242,215}
+\definecolor{back}{RGB}{51,51,51}
+%{RGB}{51,51,51}
+\definecolor{title}{RGB}{230,96,6}
+%{255,0,90}
+%http://meyerweb.com/eric/tools/color-blend/
+%http://mikedewar.wordpress.com/2009/02/25/latex-beamer-python-beauty/
+%http://www.census.gov/population/international/data/worldpop/table_population.php
+
+\setbeamercolor{titlelike}{fg=title}
+\setbeamercolor{normal text}{fg=fore,bg=back}
+
+\usepackage{listings,bera}
+\definecolor{keywords}{RGB}{255,102,0}
+%{255,0,90}
+\definecolor{comments}{RGB}{51,153,204}
+\lstset{language=Python,
+keywordstyle=\color{keywords},
+commentstyle=\color{comments}\emph}
+
+\begin{document}
+
+\begin{frame}[fragile]
+\frametitle{Generic slide}
+\begin{itemize}
+\item Introduction to  \LaTeX  
+\item Course 2 
+\item Termpapers and presentations with \LaTeX 
+\item Beamer class
+\end{itemize} 
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Python for Ecologists}
+\begin{itemize}
+  \item Assuming not much programming experience
+  \item Immersion approach 
+\begin{itemize}
+  \item Short lecture on Python topic
+  \item Hands-on Python exercises 
+  \item Rinse \& repeat
+\end{itemize}
+  \item Will use ecological examples as much as possible.
+\end{itemize} 
+ 
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Why bother with Python when I have R?}
+\begin{itemize}
+\item Introduction to  \LaTeX  
+\item Course 2 
+\item Termpapers and presentations with \LaTeX 
+\item Beamer class
+\end{itemize} 
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Hello world! (from an interpreter)}
+\begin{lstlisting}
+>>> python
+>>> print "Hello world!"
+Hello world!
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Hello world! (from a script)}
+\begin{lstlisting}
+# save this in a text file as hello.py
+print "Hello world!"
+# then run at the command prompt with 'python hello.py'
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Hello world! (as an executable)}
+\begin{lstlisting}
+#!/usr/bin/env python
+# the above line automatically invokes Python
+# save this in a text file as hello_exe.py
+print "Hello world!"
+# we can run this with simply "hello"
+\end{lstlisting}
+\end{frame}
+
+\end{document}

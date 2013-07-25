@@ -1,0 +1,176 @@
+\documentclass{beamer}
+
+\usetheme{default}
+\beamertemplatenavigationsymbolsempty
+
+%http://mikedewar.wordpress.com/2009/02/25/latex-beamer-python-beauty/
+\definecolor{fore}{RGB}{249,242,215}
+%{249,242,215}
+\definecolor{back}{RGB}{51,51,51}
+%{RGB}{51,51,51}
+\definecolor{title}{RGB}{230,96,6}
+%{255,0,90}
+%http://meyerweb.com/eric/tools/color-blend/
+%http://www.census.gov/population/international/data/worldpop/table_population.php
+\setbeamercolor{titlelike}{fg=title}
+\setbeamercolor{normal text}{fg=fore,bg=back}
+
+\useinnertheme{rectangles}
+\definecolor{UniBlue}{RGB}{34,139,34}
+\setbeamercolor*{item}{fg=UniBlue}
+
+\usepackage{colortbl}
+\usepackage{caption}
+\usepackage{listings,bera}
+\usepackage{lipsum}
+\newcommand\Fontvi{\fontsize{6}{7.2}\selectfont}
+\newcommand\Fontvii{\fontsize{7}{7.5}\selectfont}
+\newcommand\Fontviii{\fontsize{8}{7.8}\selectfont}
+\newcommand\Fontix{\fontsize{9}{8.3}\selectfont}
+\definecolor{keywords}{RGB}{255,102,0}
+%{255,0,90}
+\definecolor{comments}{RGB}{51,153,204}
+%\definecolor{comments}{RGB}{83,121,170}
+\setbeamertemplate{caption}[numbered]
+%\useoutertheme{infolines}
+\lstset{language=Python,
+keywordstyle=\color{keywords},
+commentstyle=\color{comments}\emph}
+
+%\logo{epa-logo-full.jpg}
+
+%example table
+%\begin{frame}[fragile]
+%\frametitle{Basic math operations}
+%\begin{center}
+%\begin{tabular}{lc} \hline
+%\rowcolor{UniBlue!100}col1 & col2 \\ \hline \hline
+%\rowcolor{UniBlue!75}3 & 3 \\ \hline
+%\rowcolor{UniBlue!90}3 & 3 \\ \hline
+%\rowcolor{UniBlue!75}3 & 3 \\ \hline
+%\rowcolor{UniBlue!90}3 & 3 \\ \hline
+%\end{tabular}
+%\end{center}
+
+% items enclosed in square brackets are optional; explanation below
+\title[Title1]{Functions}
+\subtitle[Title2]{Python for Ecologists}
+\author[etal]{Tom Purucker, Tao Hong, Chance Pascale}
+\institute[EPA]{
+  Ecological Society of America Workshop\\
+  Portland, OR\\[1ex]
+  \texttt{purucker.tom@gmail.com}
+}
+
+\begin{document}
+
+%--- the titlepage frame -------------------------%
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+%\begin{frame}
+%\frametitle{Frame with reduced font size}
+%\Fontvi
+%\lipsum[1]
+%\end{frame}
+
+%\begin{frame}
+%\frametitle{Frame with regular font size}
+%\lipsum[1]
+%\end{frame}
+
+%\begin{frame}[fragile]
+%\frametitle{Generic slide}
+%\begin{itemize}
+%\item thing 1  
+%\item thing 2 
+%\item thing 3 
+%\item thing 4
+%\end{itemize} 
+%\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Functions}
+\begin{itemize}
+  \item A function takes one or more arguments and returns something
+  \item Can return any type of data structure, including None
+  \item Basic organization of a function:
+\item \begin{lstlisting}
+def some_function(arg1, arg2):
+  #some statements
+  return answer
+\end{lstlisting}
+
+\end{itemize} 
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{whitespace and naming}
+\begin{itemize}
+  \item Whitespace usage is important
+  \begin{itemize}
+  \item Indent consistently with 2 or 4 spaces
+  \item Use spaces instead of tabs, -tt
+  \end{itemize}
+  \item{Naming conventions}
+  \begin{itemize}
+  \item lower case words, cannot start with a number
+  \item use verbs that describe what the function does
+  \item underscore\_between\_words
+  \end{itemize}
+\begin{lstlisting}
+def some_function(arg1, arg2):
+  #some statements
+  return answer
+\end{lstlisting}
+
+\end{itemize} 
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Example Function}
+\begin{itemize}
+\item Argument names can be informative, helping documentation (e.g., growth\_rate instead of arg1)
+\end{itemize}
+\begin{lstlisting}
+def add_two_numbers(num1, num2):
+  return num1 + num2
+  
+add_two_numbers(6,5)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{docstrings}
+\begin{itemize}
+\item Tripe quoted comment at beginning of functions is accessible as a dunder doc (.\_\_doc\_\_) or help()
+\end{itemize}
+\begin{lstlisting}
+def add_two_numbers(num1, num2):
+  """ this function adds two numbers
+  together"""
+  return num1 + num2
+  
+help(add_two_numbers)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Types of Arguments}
+\begin{itemize}
+\item Required arguments do not have a default
+\item Keyword arguments can have a default value (and are optional)
+\item Keyword arguments are differentiated by setting equal to a value in the function argument list
+\end{itemize}
+\begin{lstlisting}
+def double_it(required1, keyword2=2):
+  return required1 * keyword2
+  
+double_it(6)
+double_it(6,3) #actually triples it
+\end{lstlisting}
+\end{frame}
+
+\end{document}
+

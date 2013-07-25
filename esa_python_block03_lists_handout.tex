@@ -1,0 +1,230 @@
+\documentclass{beamer}
+\usepackage{handoutWithNotes}
+\pgfpagesuselayout{4 on 1 with notes}[a4paper,border shrink=5mm]
+
+\usetheme{default}
+\beamertemplatenavigationsymbolsempty
+
+%http://mikedewar.wordpress.com/2009/02/25/latex-beamer-python-beauty/
+%\definecolor{fore}{RGB}{249,242,215}
+\definecolor{fore}{RGB}{51,51,51}
+%{249,242,215}
+%\definecolor{back}{RGB}{51,51,51}
+\definecolor{back}{RGB}{249,242,215}
+%{RGB}{51,51,51}
+\definecolor{title}{RGB}{230,96,6}
+%{255,0,90}
+%http://meyerweb.com/eric/tools/color-blend/
+%http://www.census.gov/population/international/data/worldpop/table_population.php
+\setbeamercolor{titlelike}{fg=title}
+\setbeamercolor{normal text}{fg=fore,bg=back}
+
+\useinnertheme{rectangles}
+\definecolor{UniBlue}{RGB}{34,139,34}
+\setbeamercolor*{item}{fg=UniBlue}
+
+\usepackage{colortbl}
+\usepackage{caption}
+\usepackage{listings,bera}
+\usepackage{lipsum}
+\newcommand\Fontvi{\fontsize{6}{7.2}\selectfont}
+\newcommand\Fontvii{\fontsize{7}{7.5}\selectfont}
+\newcommand\Fontviii{\fontsize{8}{7.8}\selectfont}
+\newcommand\Fontix{\fontsize{9}{8.3}\selectfont}
+\definecolor{keywords}{RGB}{255,102,0}
+%{255,0,90}
+\definecolor{comments}{RGB}{51,153,204}
+%\definecolor{comments}{RGB}{83,121,170}
+\setbeamertemplate{caption}[numbered]
+%\useoutertheme{infolines}
+\lstset{language=Python,
+keywordstyle=\color{keywords},
+commentstyle=\color{comments}\emph}
+
+%\logo{epa-logo-full.jpg}
+
+%example table
+%\begin{frame}[fragile]
+%\frametitle{Basic math operations}
+%\begin{center}
+%\begin{tabular}{lc} \hline
+%\rowcolor{UniBlue!100}col1 & col2 \\ \hline \hline
+%\rowcolor{UniBlue!75}3 & 3 \\ \hline
+%\rowcolor{UniBlue!90}3 & 3 \\ \hline
+%\rowcolor{UniBlue!75}3 & 3 \\ \hline
+%\rowcolor{UniBlue!90}3 & 3 \\ \hline
+%\end{tabular}
+%\end{center}
+
+% items enclosed in square brackets are optional; explanation below
+\title[Title1]{Lists}
+\subtitle[Title2]{Python for Ecologists}
+\author[etal]{Tom Purucker, Tao Hong, Chance Pascale}
+\institute[EPA]{
+  Ecological Society of America Workshop\\
+  Portland, OR\\[1ex]
+  \texttt{purucker.tom@gmail.com}
+}
+
+\begin{document}
+
+%--- the titlepage frame -------------------------%
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+%\begin{frame}
+%\frametitle{Frame with reduced font size}
+%\Fontvi
+%\lipsum[1]
+%\end{frame}
+
+%\begin{frame}
+%\frametitle{Frame with regular font size}
+%\lipsum[1]
+%\end{frame}
+
+%\begin{frame}[fragile]
+%\frametitle{Generic slide}
+%\begin{itemize}
+%\item thing 1  
+%\item thing 2 
+%\item thing 3 
+%\item thing 4
+%\end{itemize} 
+%\end{frame}
+
+
+%example table
+\begin{frame}[fragile]
+\frametitle{Lists, Tuples, and Dictionaries}
+\begin{center}
+\begin{tabular}{lccc} \hline
+\rowcolor{UniBlue!100}Type & Create Empty & Mutable? & Order   \\ \hline \hline
+\rowcolor{UniBlue!75}List & my\_list = [] & Mutable & Yes \\ \hline
+\rowcolor{UniBlue!90}Tuple & my\_tuple = () & Immutable & No \\ \hline
+\rowcolor{UniBlue!75}Dictionary & my\_dictionary = \{\} & Mutable & No \\ \hline
+\end{tabular}
+\end{center}
+\begin{itemize}
+\item Mutable here means you can append, change, subtract, etc.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Lists}
+\begin{lstlisting}
+species_names = []
+species_names.append("Geospiza fuliginosa") # small
+species_names.append("Geospiza fortis") # medium
+species_names.append("Geospiza magnirostris") # large
+species_names
+species_names.sort() #lists are mutable
+#sorted(species_names) would not change the list
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Lists}
+\begin{itemize}
+\item Index, Value pairs
+\item Lists can be nested
+\item Tuples can use any immutable type as an index (not just integers)
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Some list functions}
+\begin{itemize}
+\item Lists can mix types
+\begin{lstlisting}
+some_list = [23, 23., 'Frog', None, True] 
+#None and Boolean types
+\end{lstlisting}
+\item Lists have similar methods as strings
+\begin{lstlisting}
+some_list[0]
+len(some_list)
+[1,2] + [3,4]
+\end{lstlisting}
+\item We can easily loop over the list elements
+\begin{lstlisting}
+for thing in some_list: 
+  print thing
+\end{lstlisting}
+\item And check to see if elements are in the list
+\begin{lstlisting}
+'Frog' in some_list
+'Bird' in some_list
+\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Deleting list elements}
+\begin{itemize}
+\item Getting rid of list elements
+\begin{lstlisting}
+some_list
+some_list.pop(0)
+some_list
+del some_list[2]
+del some_list
+\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Tuples}
+\begin{itemize}
+\item Tuples are immutable objects that cannot be altered
+\item Use parentheses () instead of square brackets []
+\begin{lstlisting}
+some_tuple = (23,23.,'Frog',None,True)
+\end{lstlisting}
+\item Tuples and lists can both be sliced
+\begin{lstlisting}
+some_tuple[0:2]
+some_list[0:2]
+\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Exercise 3- Run the script exer03\_lists.py}
+\Fontvi
+\begin{lstlisting}
+class TestLists(unittest.TestCase):
+    def test_lists(self):
+        """
+        A basic introduction to lists
+        """
+        # Create the variable ``bird_list`` and assign to an empty list
+        # **************************************************
+
+        self.assertEquals(bird_list, [])
+
+        # Append 'American redstart' and 'Arctic tern' to ``bird_list``
+        # **************************************************
+
+        self.assertEquals(bird_list, ['American redstart','Arctic tern' ])
+
+        # Sort ``bird_list``
+        # **************************************************
+
+        self.assertEquals(bird_list,  ['Arctic tern', 'American redstart'])
+
+        # ``extend`` the list ``bird_list`` with ['Northern parula', 'george']
+        # **************************************************
+
+        self.assertEquals(bird_list, ['Arctic tern', 'American redstart', ...])
+
+        # create a variable ``warbler_id`` with the index of 'Hooded warbler' in
+        # ``bird_list`` using list methods.
+        # **************************************************
+
+        self.assertEquals(warbler_id, 3)
+\end{lstlisting}
+\end{frame}
+
+\end{document}

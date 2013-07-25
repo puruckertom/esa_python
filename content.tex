@@ -1,0 +1,120 @@
+% DO NOT COMPILE THIS FILE DIRECTLY!
+% This is included by the other .tex files.
+
+% titlepage
+\begin{frame}[t,plain]
+	\titlepage
+\end{frame}
+
+% a code example
+\begin{frame}[fragile]{A code example}
+\begin{verbatim}
+print 'hello world!'
+\end{verbatim}
+\end{frame}
+
+% why bother
+\begin{frame}[t]{Why bother with version control?}
+ \begin{itemize}
+ \item Ability to 'roll back' to an earlier version
+   \begin{itemize}
+   \item{Commit-level comments aids this process}
+   \item{Creates a meta-history of the development process}
+   \end{itemize}
+ \item Can branch/fork projects
+ 	\begin{itemize}
+ 	\item{Try alternative analysis/modeling approaches without risk}
+ 	\item{Create a data analysis base that is branched off to different 	applications/teams}
+ 	\end{itemize}
+ \item{Cloud-based so recovery possible from various failure scenarios}
+ \item Tracking changes leads to accountability for team projects
+   \begin{itemize}
+   \item Who did what when
+   \item You are more informed about what other team members are working on
+   \end{itemize}
+  \item{Enables open source software}
+  \item{Resolve coding conflicts in source files}
+ \end{itemize}
+\end{frame}
+
+\begin{frame}[t,fragile]{Is it worth the hassle and the learning curve?}
+\begin{itemize}
+\item Yes.
+	\begin{itemize}
+	\item Distributed development
+	\item Local team
+	\item Solo project
+	\end{itemize}
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t,fragile]{Minimalist version control with Dropbox}
+\begin{itemize}
+\item Technically not version control but...
+\item Very fast and easy to use
+\item Esssentially an auto-commit
+	\begin{itemize}
+	\item{Push-Pull operations happen by default}
+	\item{Some OS/IDE operations will automatically reload modified files}
+	\item{Changes can be undone and files can be undeleted}
+	\end{itemize}
+\item Cloud-based
+  \begin{itemize}
+  \item{2 GB free, unlimited sharing}
+    \item{Can access back 30 days worth of modifications in free version}
+    \item{Cross-OS and smart phone}
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t,fragile]{Git}
+\begin{itemize}
+\item http://git-scm.com/
+\item Newish approach to DVCS
+\item Fast, free, more control but a little more work than Dropbox
+  \begin{itemize}
+  \item Peer-to-peer, not centralized (fast)
+  \item Complete repository exists locally
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t,fragile]{Bitbucket (or GitHub or SourceForge)}
+\begin{itemize}
+\item https://bitbucket.org/
+\item Functions as a central repository
+\item Hosting sites for numerous open source projects, R pakages, etc.
+\item Free, extra repositories and shares for edu accounts
+\item Private or public repositories
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t,fragile]{DVCS Process Picture}
+\begin{figure}
+\includegraphics[scale=0.5]{Git_data_flow.png} 
+\caption{Git version control}
+\end{figure}
+\end{frame}
+
+\begin{frame}[t,fragile]{RStudio}
+\begin{itemize}
+\item RStudio v0.95 has version control
+\item Uses R Studio projects and must have Git already installed
+\item Tools -$>$ Shell
+\item Tools -$>$ Version Control -$>$
+	\begin{itemize}
+	\item Diff
+	\item Log
+	\item Revert
+	\item Pull branches
+	\item Push branches
+	\item History
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+
+
+
