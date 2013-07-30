@@ -58,8 +58,8 @@ commentstyle=\color{comments}\emph}
 \author[etal]{Tao Hong, Chance Pascale, Tom Purucker}
 \institute[EPA]{
   Ecological Society of America Workshop\\
-  Portland, OR\\[1ex]
-  \texttt{purucker.tom@gmail.com}
+  Minneapolis, MN\\[1ex]
+  \texttt{hongtao510@gmail.com}
 }
 
 \begin{document}
@@ -114,12 +114,14 @@ commentstyle=\color{comments}\emph}
 \begin{lstlisting}
 print bw_grams['Barking treefrog']
 'Barking treefrog' in bw_grams
+bw_grams.has_key('Barking treefrog')
 print bw_grams.get('Barking treefrog', 'Not found')
-# setting a default value for a key
+# Compare
+bw_grams.setdefault('Barking treefrog', 80) 
+# another way to set a default value for a key
 if 'Barking treefrog' not in bw_grams:
   bw_grams['Barking treefrog'] = 80
-# another way to set a a value for key
-bw_grams.setdefault('Barking treefrog', 80) 
+
 \end{lstlisting}
 \end{frame}
 
@@ -133,6 +135,11 @@ male43["status"] = "infected"
 male43
 \end{lstlisting}
 \item Dictionary name (e.g., male43) can be nested and itself be a key
+\begin{lstlisting}
+male4 = {"male43" : male43}
+male4
+male4['male43']["status"]
+\end{lstlisting}
 \end{itemize}
 \end{frame}
 
@@ -140,18 +147,51 @@ male43
 \frametitle{Using variables to map dictionaries}
 \begin{lstlisting}
 bw_grams = {}
-frog = ''
-weight = ''
-
+frog = 'Cricket frog'
+weight = '10'
+bw_grams['frog'] = frog
+bw_grams['weight'] = weight
 \end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]
+\begin{itemize}
 \frametitle{Deleting a key}
+\item Compare
 \begin{lstlisting}
 del bw_grams['infected']
-
+bw_grams.pop('infected')
 \end{lstlisting}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{itemize}
+\frametitle{Other methods}
+\item List all contents
+\begin{lstlisting}
+bw_grams.items()
+\end{lstlisting}
+\item List keys
+\begin{lstlisting}
+bw_grams.keys()
+\end{lstlisting}
+\item List values
+\begin{lstlisting}
+bw_grams.values()
+\end{lstlisting}
+\item Iterable
+\begin{lstlisting}
+tmp= bw_grams.iteritems()
+for i in tmp: 
+  print i
+\end{lstlisting}
+\item Compare
+\begin{lstlisting}
+for i in bw_grams: 
+  print j
+\end{lstlisting}
+\end{itemize}
 \end{frame}
 
 \end{document}
