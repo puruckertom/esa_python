@@ -23,6 +23,7 @@
 \usepackage{caption}
 \usepackage{listings,bera}
 \usepackage{lipsum}
+\usepackage{url}
 \newcommand\Fontvi{\fontsize{6}{7.2}\selectfont}
 \newcommand\Fontvii{\fontsize{7}{7.5}\selectfont}
 \newcommand\Fontviii{\fontsize{8}{7.8}\selectfont}
@@ -53,7 +54,7 @@ commentstyle=\color{comments}\emph}
 %\end{center}
 
 % items enclosed in square brackets are optional; explanation below
-\title[Title1]{Dictionaries}
+\title[Title1]{Numpy}
 \subtitle[Title2]{Python for Ecologists}
 \author[etal]{Tao Hong, Chance Pascale, Tom Purucker}
 \institute[EPA]{
@@ -91,38 +92,31 @@ commentstyle=\color{comments}\emph}
 %\end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Dictionaries}
+\frametitle{Overview}
 \begin{itemize}
-  \item Also known as associative arrays or hashmaps
-  \item {key:value}
-  \item Are mutable, like lists
-  \item Unlike lists, index can be something other than an integer 
-  \item Lists keep order, dictionaries don't
-  \item Can be very efficient for searching and for table lookups
-  \begin{lstlisting}
-    bw_grams = {}
-    bw_grams['Spring peeper'] = 4
-    bw_grams['Bullfrog'] = 500
-    bw_grams['Cane toad'] = 1800
-    print bw_grams['Bullfrog']
-  \end{lstlisting} 
+  \item Install Numpy
+  \item Array
+  \item Indexing
+  \item Matrix 
+  \item Reference
 \end{itemize} 
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Setting keys and values}
-\begin{lstlisting}
-print bw_grams['Barking treefrog']
-'Barking treefrog' in bw_grams
-bw_grams.has_key('Barking treefrog')
-print bw_grams.get('Barking treefrog', 'Not found')
-# Compare
-bw_grams.setdefault('Barking treefrog', 80) 
-# another way to set a default value for a key
-if 'Barking treefrog' not in bw_grams:
-  bw_grams['Barking treefrog'] = 80
+\frametitle{Install Numpy}
+\begin{itemize}
+  \item Windows
+  \begin{itemize}
+  \item Official \\
+  http://sourceforge.net/projects/numpy/?source=dlp
+  \item Unofficial (Windows binaries) \\
+  \url{http://www.lfd.uci.edu/~gohlke/pythonlibs/} \\
+  \item Portable Python \\
+  http://portablepython.com/wiki/PortablePython2.7.5.1/
+  \end{itemize} 
+\end{itemize} 
 
-\end{lstlisting}
+
 \end{frame}
 
 \begin{frame}[fragile]
