@@ -1,0 +1,191 @@
+\documentclass{beamer}
+
+\usetheme{default}
+\beamertemplatenavigationsymbolsempty
+
+%http://mikedewar.wordpress.com/2009/02/25/latex-beamer-python-beauty/
+\definecolor{fore}{RGB}{249,242,215}
+%{249,242,215}
+\definecolor{back}{RGB}{51,51,51}
+%{RGB}{51,51,51}
+\definecolor{title}{RGB}{230,96,6}
+%{255,0,90}
+%http://meyerweb.com/eric/tools/color-blend/
+%http://www.census.gov/population/international/data/worldpop/table_population.php
+\setbeamercolor{titlelike}{fg=title}
+\setbeamercolor{normal text}{fg=fore,bg=back}
+
+\useinnertheme{rectangles}
+\definecolor{UniBlue}{RGB}{34,139,34}
+\setbeamercolor*{item}{fg=UniBlue}
+
+\usepackage{colortbl}
+\usepackage{caption}
+\usepackage{listings,bera}
+\usepackage{lipsum}
+\usepackage{url}
+\newcommand\Fontvi{\fontsize{6}{7.2}\selectfont}
+\newcommand\Fontvii{\fontsize{7}{7.5}\selectfont}
+\newcommand\Fontviii{\fontsize{8}{7.8}\selectfont}
+\newcommand\Fontix{\fontsize{9}{8.3}\selectfont}
+\definecolor{keywords}{RGB}{255,102,0}
+%{255,0,90}
+\definecolor{comments}{RGB}{51,153,204}
+%\definecolor{comments}{RGB}{83,121,170}
+\setbeamertemplate{caption}[numbered]
+%\useoutertheme{infolines}
+\lstset{language=Python,
+keywordstyle=\color{keywords},
+commentstyle=\color{comments}\emph}
+
+%\logo{epa-logo-full.jpg}
+
+%example table
+%\begin{frame}[fragile]
+%\frametitle{Basic math operations}
+%\begin{center}
+%\begin{tabular}{lc} \hline
+%\rowcolor{UniBlue!100}col1 & col2 \\ \hline \hline
+%\rowcolor{UniBlue!75}3 & 3 \\ \hline
+%\rowcolor{UniBlue!90}3 & 3 \\ \hline
+%\rowcolor{UniBlue!75}3 & 3 \\ \hline
+%\rowcolor{UniBlue!90}3 & 3 \\ \hline
+%\end{tabular}
+%\end{center}
+
+% items enclosed in square brackets are optional; explanation below
+\title[Title1]{Numpy}
+\subtitle[Title2]{Python for Ecologists}
+\author[etal]{Tao Hong, Chance Pascale, Tom Purucker}
+\institute[EPA]{
+  Ecological Society of America Workshop\\
+  Minneapolis, MN\\[1ex]
+  \texttt{hongtao510@gmail.com}
+}
+
+\begin{document}
+
+%--- the titlepage frame -------------------------%
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+%\begin{frame}
+%\frametitle{Frame with reduced font size}
+%\Fontvi
+%\lipsum[1]
+%\end{frame}
+
+%\begin{frame}
+%\frametitle{Frame with regular font size}
+%\lipsum[1]
+%\end{frame}
+
+%\begin{frame}[fragile]
+%\frametitle{Generic slide}
+%\begin{itemize}
+%\item thing 1  
+%\item thing 2 
+%\item thing 3 
+%\item thing 4
+%\end{itemize} 
+%\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Overview}
+\begin{itemize}
+  \item Install Numpy
+  \item Array
+  \item Indexing
+  \item Matrix 
+  \item Reference
+\end{itemize} 
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Install Numpy}
+\begin{itemize}
+  \item Windows
+  \begin{itemize}
+  \item Official \\
+  http://sourceforge.net/projects/numpy/?source=dlp
+  \item Unofficial (Windows binaries) \\
+  \url{http://www.lfd.uci.edu/~gohlke/pythonlibs/} \\
+  \item Portable Python \\
+  http://portablepython.com/wiki/PortablePython2.7.5.1/
+  \end{itemize} 
+\end{itemize} 
+
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Mixing types}
+\begin{itemize}
+\item Can be used to track properties of individuals in an individual-based model
+\begin{lstlisting}
+male43 = {"sp":"Orca", "bw":10., "status":"suscept"}
+male43["status"] = "infected"
+male43
+\end{lstlisting}
+\item Dictionary name (e.g., male43) can be nested and itself be a key
+\begin{lstlisting}
+male4 = {"male43" : male43}
+male4
+male4['male43']["status"]
+\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Using variables to map dictionaries}
+\begin{lstlisting}
+bw_grams = {}
+frog = 'Cricket frog'
+weight = '10'
+bw_grams['frog'] = frog
+bw_grams['weight'] = weight
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{itemize}
+\frametitle{Deleting a key}
+\item Compare
+\begin{lstlisting}
+del bw_grams['infected']
+bw_grams.pop('infected')
+\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{itemize}
+\frametitle{Other methods}
+\item List all contents
+\begin{lstlisting}
+bw_grams.items()
+\end{lstlisting}
+\item List keys
+\begin{lstlisting}
+bw_grams.keys()
+\end{lstlisting}
+\item List values
+\begin{lstlisting}
+bw_grams.values()
+\end{lstlisting}
+\item Iterable
+\begin{lstlisting}
+tmp= bw_grams.iteritems()
+for i in tmp: 
+  print i
+\end{lstlisting}
+\item Compare
+\begin{lstlisting}
+for i in bw_grams: 
+  print j
+\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+\end{document}
