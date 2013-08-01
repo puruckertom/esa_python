@@ -11,6 +11,9 @@ elif grade >= 60:
 else:
   print "F"
 
+# boolean
+print(bool("alpha"<"beta"))
+
 # through a list of strings with indices
 watersheds = ["Suwanne", "Oconee", "Tennessee", "Flint"]
 for index, value in enumerate(watersheds):

@@ -1,0 +1,620 @@
+\documentclass{beamer}
+
+\usetheme{default}
+\beamertemplatenavigationsymbolsempty
+
+%http://mikedewar.wordpress.com/2009/02/25/latex-beamer-python-beauty/
+\definecolor{fore}{RGB}{249,242,215}
+%{249,242,215}
+\definecolor{back}{RGB}{51,51,51}
+%{RGB}{51,51,51}
+\definecolor{title}{RGB}{230,96,6}
+%{255,0,90}
+%http://meyerweb.com/eric/tools/color-blend/
+%http://www.census.gov/population/international/data/worldpop/table_population.php
+\setbeamercolor{titlelike}{fg=title}
+\setbeamercolor{normal text}{fg=fore,bg=back}
+
+\useinnertheme{rectangles}
+\definecolor{UniBlue}{RGB}{34,139,34}
+\setbeamercolor*{item}{fg=UniBlue}
+
+\usepackage{colortbl}
+\usepackage{caption}
+\usepackage{listings,bera}
+\usepackage{lipsum}
+\usepackage{url}
+\newcommand\Fontvi{\fontsize{6}{7.2}\selectfont}
+\newcommand\Fontvii{\fontsize{7}{7.5}\selectfont}
+\newcommand\Fontviii{\fontsize{8}{7.8}\selectfont}
+\newcommand\Fontix{\fontsize{9}{8.3}\selectfont}
+\definecolor{keywords}{RGB}{255,102,0}
+%{255,0,90}
+\definecolor{comments}{RGB}{51,153,204}
+%\definecolor{comments}{RGB}{83,121,170}
+\setbeamertemplate{caption}[numbered]
+%\useoutertheme{infolines}
+\lstset{language=Python,
+keywordstyle=\color{keywords},
+commentstyle=\color{comments}\emph}
+
+%\logo{epa-logo-full.jpg}
+
+%example table
+%\begin{frame}[fragile]
+%\frametitle{Basic math operations}
+%\begin{center}
+%\begin{tabular}{lc} \hline
+%\rowcolor{UniBlue!100}col1 & col2 \\ \hline \hline
+%\rowcolor{UniBlue!75}3 & 3 \\ \hline
+%\rowcolor{UniBlue!90}3 & 3 \\ \hline
+%\rowcolor{UniBlue!75}3 & 3 \\ \hline
+%\rowcolor{UniBlue!90}3 & 3 \\ \hline
+%\end{tabular}
+%\end{center}
+
+% items enclosed in square brackets are optional; explanation below
+\title[Title1]{Numpy}
+\subtitle[Title2]{Python for Ecologists}
+\author[etal]{Tao Hong, Chance Pascale, Tom Purucker}
+\institute[EPA]{
+  Ecological Society of America Workshop\\
+  Minneapolis, MN\\[1ex]
+  \texttt{hongtao510@gmail.com}
+}
+
+\begin{document}
+
+%--- the titlepage frame -------------------------%
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+%\begin{frame}
+%\frametitle{Frame with reduced font size}
+%\Fontvi
+%\lipsum[1]
+%\end{frame}
+
+%\begin{frame}
+%\frametitle{Frame with regular font size}
+%\lipsum[1]
+%\end{frame}
+
+%\begin{frame}[fragile]
+%\frametitle{Generic slide}
+%\begin{itemize}
+%\item thing 1  
+%\item thing 2 
+%\item thing 3 
+%\item thing 4
+%\end{itemize} 
+%\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Overview}
+\begin{itemize}
+  \item Install Numpy
+  \item Array
+  \item Index
+  \item Random number
+  \item Basic operations
+  \item Reference
+\end{itemize} 
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Install Numpy}
+\begin{itemize}
+  \item Windows
+  \begin{itemize}
+  \item Official \\
+  http://sourceforge.net/projects/numpy/?source=dlp
+  \item Unofficial (Windows binaries) \\
+  \url{http://www.lfd.uci.edu/~gohlke/pythonlibs/} \\
+  \item Portable Python \\
+  http://portablepython.com/wiki/PortablePython2.7.5.1/
+  \end{itemize} 
+\end{itemize} 
+
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Arrays}
+\begin{itemize}
+\item Create an array
+\begin{lstlisting}
+a = np.array([10, 20, 30, 40], float)
+[ 10.  20.  30.  40.]
+
+b = np.array([10, 20, 30, 40])
+[10 20 30 40]
+
+c = np. array([[1, 2],[4, 5]])
+[[1 2]
+ [4 5]]
+
+d = np. array([[1, 2],[4, 5.0]])
+[[ 1.  2.]
+ [ 4.  5.]]
+\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{np.arange}
+\begin{itemize}
+\item np.array is not efficient, try np.arange
+\item np.arange(start, stop, step, dtype=None)
+\begin{lstlisting}
+f = np.arange(0,4,1) #does not include '4'
+[0 1 2 3]
+
+g = np.arange(4)
+[0 1 2 3]
+\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{itemize}
+\frametitle{np.linespace}
+\item Compare to np.arange
+\item np.linspace(start, stop, num, endpoint=True, retstep=False)
+\begin{lstlisting}
+h = np.linspace(2.0, 3.0, num=5)
+[ 2.    2.25  2.5   2.75  3.  ]
+
+i = np.linspace(2.0, 3.0, num=5, endpoint=False)
+[ 2.   2.2  2.4  2.6  2.8]
+
+j = np.linspace(2.0, 3.0, num=5, retstep=True)
+(array([ 2.  ,  2.25,  2.5 ,  2.75,  3.  ]), 0.25)
+\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Other ways to create arrays}
+\begin{itemize}
+\item np.ones
+\begin{lstlisting}
+x = np.ones((2,3), float)
+[[ 1.  1.  1.]
+ [ 1.  1.  1.]]
+\end{lstlisting}
+
+\item np.zeros
+\begin{lstlisting}
+x = np.zeros((2,3), float)
+[[ 0.  0.  0.]
+ [ 0.  0.  0.]]
+\end{lstlisting}
+
+\item np.identity
+\begin{lstlisting}
+x = np.identity(3, float)
+[[ 1.  0.  0.]
+ [ 0.  1.  0.]
+ [ 0.  0.  1.]]
+\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Array properties (1)}
+\begin{lstlisting}
+a = np.array([[1, 2, 3], [4, 5, 6]], float)
+a.shape #shape
+(2, 3)
+
+a.reshape(1,6)
+[[ 1.  2.  3.  4.  5.  6.]]
+
+a.ndim #number of dimensions
+2
+
+a.dtype #data type
+float64
+
+a.size #number of elements
+6
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Array properties (2)}
+\begin{lstlisting}
+a = np.array([[1, 2, 3], [4, 5, 6]], float)
+k = a.flatten()
+[ 1.  2.  3.  4.  5.  6.]
+
+l = a.tolist() #array to list
+[[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]
+type(l)
+<type 'list'>
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Array properties (3)}
+\begin{lstlisting}
+m = a.transpose()
+[[ 1.  4.]
+ [ 2.  5.]
+ [ 3.  6.]]
+
+p = np.array([[1, 2], [3, 4]])
+q = np.array([[5, 6], [7,8]])
+
+r = np.concatenate((p,q), axis=0) #Join arrays together
+[[1 2]
+ [3 4]
+ [5 6]
+ [7 8]]
+
+s = np.concatenate((p,q), axis=1)
+[[1 2 5 6]
+ [3 4 7 8]]
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Index (1)}
+\begin{itemize}
+\item Integer index
+
+\begin{lstlisting}
+a = np.arange(10)
+\end{lstlisting}
+
+\begin{table}[t]
+\centering
+\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|}
+\hline
+a & 0 & 1 & 2 & 3 & 4 & \cellcolor{red}5 & 6 & 7 & 8 & 9 \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{lstlisting}
+a[5]
+5
+\end{lstlisting}
+
+\item A range (starts at the 4th and ends before 6th)
+\begin{table}[t]
+\centering
+\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|}
+\hline
+a & 0 & 1 & 2 &\cellcolor{red} 3 &\cellcolor{red} 4 & 5 & 6 & 7 & 8 & 9 \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{lstlisting}
+a[3:5]
+[3, 4]
+\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Index (2)}
+\begin{itemize}
+\item The first three elements
+\begin{table}[t]
+\centering
+\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|}
+\hline
+a &\cellcolor{red} 0 &\cellcolor{red} 1 &\cellcolor{red} 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
+\hline
+\end{tabular}
+\end{table}
+\begin{lstlisting}
+a[:3]
+[0,1,2]
+\end{lstlisting}
+\item Counting backwards
+\begin{table}[t]
+\centering
+\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|}
+\hline
+a &\cellcolor{red} 0 &\cellcolor{red} 1 &\cellcolor{red} 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
+\hline
+\end{tabular}
+\end{table}
+\begin{lstlisting}
+a[:-7]
+[0,1,2]
+\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Index (3)}
+\begin{itemize}
+\item Reverse the array
+\begin{table}[t]
+\centering
+\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|}
+\hline
+a & 9 & 8 & 7 & 6 & 5 & 4 & 3 & 2 & 1 & 0 \\
+\hline
+\end{tabular}
+\end{table}
+\begin{lstlisting}
+a[::-1]
+[9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+\end{lstlisting}
+
+\item How to get?
+\begin{table}[t]
+\centering
+\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|}
+\hline
+a &\cellcolor{red} 9 & 8 & 7 &\cellcolor{red} 6 & 5 & 4 &\cellcolor{red} 3 & 2 & 1 &\cellcolor{red} 0 \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{lstlisting}
+a[::-3]
+[9, 6, 3, 0]
+\end{lstlisting}
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Index (4)}
+\begin{itemize}
+\item Modify content
+\begin{table}[t]
+\centering
+\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|}
+\hline
+a & 0 & 1 &\cellcolor{red} 100 &\cellcolor{red} 101 & 4 & 5 & 6 & 7 & 8 & 9 \\
+\hline
+\end{tabular}
+\end{table}
+\begin{lstlisting}
+a[2:4]=[100,101]
+[  0   1 100 101   4   5   6   7   8   9]
+\end{lstlisting}
+
+\item a[i:j:k] \\ 
+i-first, j-last (not included), k-step
+\begin{table}[t]
+\centering
+\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|}
+\hline
+a & 0 &\cellcolor{red} 1 & 100 &\cellcolor{red} 101 & 4 &\cellcolor{red} 5 & 6 &\cellcolor{red} 7 & 8 & 9 \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{lstlisting}
+a[1:-1:2]
+[  1 101   5   7]
+\end{lstlisting}
+\item Try 
+\begin{lstlisting}
+a[1::2]
+[  1 101   5   7   9]
+\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Index (5)}
+\begin{itemize}
+\item Find index of an array
+\begin{lstlisting}
+x = np.arange(9.).reshape(3, 3)
+x
+
+[[ 0.  1.  2.]
+ [ 3.  4.  5.]
+ [ 6.  7.  8.]]
+
+np.where( x > 4.5 )
+(array([1, 2, 2, 2]), array([2, 0, 1, 2]))
+\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Random number (1)}
+\begin{itemize}
+\item rand(dim) Uniform distribution over [0, 1)
+\begin{lstlisting}
+a = np.random.rand(2, 3)
+[[ 0.42811767  0.43032497  0.19511638]
+ [ 0.19985235  0.09149539  0.42384995]]
+\end{lstlisting}
+\item randn(dim) standard normal
+\begin{lstlisting}
+a = np.random.randn(2, 3)
+[[ 0.41391683  1.31774009 -1.10235464]
+ [ 0.32073693  0.32847825 -0.49657114]]
+\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Random number (2)}
+\begin{itemize}
+\item log-normal \\
+lognormal(mean, sigma, dim)
+\item Possion \\ 
+poisson(mean, dim)
+\item Beta \\ 
+beta(a, b, dim)
+\item Fix a seed \\ 
+seed(number)
+\item more distritions are available \\
+\url{http://docs.scipy.org/doc/numpy/reference/routines.random.html}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Basic operations (1)}
+\begin{itemize}
+\item sum
+\begin{lstlisting}
+a = np.array([[1, 2, 3], [4, 5, 6]], float)
+[[ 1.  2.  3.]
+ [ 4.  5.  6.]]
+a.sum()
+21.0
+a.sum(axis=0) #col sum
+[ 5.  7.  9.]
+\end{lstlisting}
+\item mean
+\begin{lstlisting}
+a.mean()
+3.5
+\end{lstlisting}
+\item variance
+\begin{lstlisting}
+a.var()
+2.91666666667
+\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Basic operations (2)}
+\begin{itemize}
+\item min
+\begin{lstlisting}
+a = np.array([[1, 2, 2], [4, 5, 4]], float)
+[[ 1.  2.  2.]
+ [ 4.  5.  4.]]
+a.min()
+1.0
+\end{lstlisting}
+\item index lookup
+\begin{lstlisting}
+a.argmin()
+0
+\end{lstlisting}
+\item find unique elements
+\begin{lstlisting}
+np.unique(a)
+[ 1.  2.  4.  5.]
+\end{lstlisting}
+\item diagnoal
+\begin{lstlisting}
+a.diagonal()
+[ 1.  5.]
+\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Basic operations (3)}
+\begin{itemize}
+\item inverse
+\begin{lstlisting}
+a = np.array([[1, 2], [4, 5]], float)
+[[ 1.  2.]
+ [ 4.  5.]]
+
+b=np.linalg.inv(a)
+[[-1.66666667  0.66666667]
+ [ 1.33333333 -0.33333333]]
+\end{lstlisting}
+\item determinant
+\begin{lstlisting}
+np.linalg.det(a)
+-3
+\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Basic operations (4)}
+\begin{itemize}
+\item matrix multiply
+\begin{lstlisting}
+np.dot(a,b)
+[[ 1.  0.]
+ [ 0.  1.]]
+\end{lstlisting}
+\item element-wise multiply
+\begin{lstlisting}
+a*b
+[[-1.66666667  1.33333333]
+ [ 5.33333333 -1.66666667]]
+\end{lstlisting}
+\item solve a linear system \\
+a x c=b
+\begin{lstlisting}
+c=np.linalg.solve(a,b)
+[[ 3.66666667 -1.33333333]
+ [-2.66666667  1.        ]]
+\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Shallow copy}
+\begin{itemize}
+\item arrays share the same elements
+\begin{lstlisting}
+a = np.arange(0, 60, 10)
+b = a
+a
+[ 0 10 20 30 40 50]
+b
+[ 0 10 20 30 40 50]
+
+a[0]=100
+a
+[100  10  20  30  40  50]
+b
+[100  10  20  30  40  50]
+\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Deep copy}
+\begin{itemize}
+\item each array has its own elements
+\begin{lstlisting}
+a = np.arange(0, 60, 10)
+import copy
+b= copy.deepcopy(a)
+a
+[ 0 10 20 30 40 50]
+b
+[ 0 10 20 30 40 50]
+
+a[0]=100
+a
+[100  10  20  30  40  50]
+b
+[0  10  20  30  40  50]
+\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Reference}
+\begin{itemize}
+\item Official document \\
+\url{http://docs.scipy.org/doc/}
+\item NumPy for MATLAB users \\
+\url{http://www.scipy.org/NumPy_for_Matlab_Users}
+\item NumPy for R (and S-Plus) users \\
+\url{http://mathesaurus.sourceforge.net/r-numpy.html}
+\item Stackoverflow \\
+\url{http://stackoverflow.com/}
+\end{itemize}
+\end{frame}
+
+\end{document}
