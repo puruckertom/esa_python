@@ -66,7 +66,6 @@ develop-eggs/
 *.mtc
 *.mtc1
 *.snm
-*.sty
 *.nav
 *.out
 *.synctex.gz
