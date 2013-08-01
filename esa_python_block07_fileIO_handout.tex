@@ -59,11 +59,11 @@ commentstyle=\color{comments}\emph}
 % items enclosed in square brackets are optional; explanation below
 \title[Title1]{File IO}
 \subtitle[Title2]{Python for Ecologists}
-\author[etal]{Chance Pascale, Tom Purucker, Tao Hong}
+\author[etal]{Tao Hong, Tom Purucker, Jonathan Flaishans, Marcia Snyder}
 \institute[EPA]{
   Ecological Society of America Workshop\\
-  Portland, OR\\[1ex]
-  \texttt{chancebatwalrus@gmail.com}
+  Minneapolis, MN\\[1ex]
+  \texttt{hongtao510@gmail.com}
 }
 
 \begin{document}
@@ -142,7 +142,7 @@ commentstyle=\color{comments}\emph}
 \item Loop through the File (here we loop through)
   \begin{lstlisting}
   for line in file:
-        print(line)   # line is a string, lets print it!
+        print(line)   # line is a string, print it!
   \end{lstlisting}
 \item Close the File
   \begin{lstlisting}
@@ -188,15 +188,11 @@ file.close()
 \begin{frame}[fragile]
 \frametitle{How can we open a file from the Internet?}
 \begin{itemize}
-\item Short answer: do different things
-\item Long answer: make one function so that both operations look the same:
-  \begin{itemize}
-\item The 'openAnything' function tries to open both URLs and local drives
+\item The 'urlopen' function tries to open URLs
 \begin{lstlisting}
-import fileUtils
-file = fileUtils.openAnything('YourFilePathHere')
+import urllib2
+file = urllib2.urlopen('YourFilePathHere')
 \end{lstlisting}
-  \end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -237,5 +233,6 @@ file = fileUtils.openAnything('YourFilePathHere')
 \end{enumerate}
 \end{enumerate} 
 \end{frame}
+
 
 \end{document}

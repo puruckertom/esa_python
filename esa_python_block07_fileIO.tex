@@ -38,6 +38,7 @@
 \lstset{language=Python,
 keywordstyle=\color{keywords},
 commentstyle=\color{comments}\emph}
+\setbeamertemplate{footline}{\scriptsize{\vspace*{0.3cm}\hspace*{0.3cm}\insertframenumber}} 
 
 %\logo{epa-logo-full.jpg}
 
@@ -57,7 +58,7 @@ commentstyle=\color{comments}\emph}
 % items enclosed in square brackets are optional; explanation below
 \title[Title1]{File IO}
 \subtitle[Title2]{Python for Ecologists}
-\author[etal]{Tao Hong Tom Purucker}
+\author[etal]{Tao Hong, Tom Purucker, Jonathan Flaishans, Marcia Snyder}
 \institute[EPA]{
   Ecological Society of America Workshop\\
   Minneapolis, MN\\[1ex]
@@ -186,15 +187,11 @@ file.close()
 \begin{frame}[fragile]
 \frametitle{How can we open a file from the Internet?}
 \begin{itemize}
-\item Short answer: do different things
-\item Long answer: make one function so that both operations look the same:
-  \begin{itemize}
-\item The 'openAnything' function tries to open both URLs and local drives
+\item The 'urlopen' function tries to open URLs
 \begin{lstlisting}
-import fileUtils
-file = fileUtils.openAnything('YourFilePathHere')
+import urllib2
+file = urllib2.urlopen('YourFilePathHere')
 \end{lstlisting}
-  \end{itemize}
 \end{itemize}
 \end{frame}
 

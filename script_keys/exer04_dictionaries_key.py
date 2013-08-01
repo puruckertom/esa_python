@@ -14,7 +14,7 @@ class TestDicts(unittest.TestCase):
         #**************************************************
         common_to_latin['Capuchin monkey']=[]
         self.assertEquals(common_to_latin['Capuchin monkey'], [])
-        self.assert_('Capuchin monkey' in common_to_latin)
+        self.assertTrue('Capuchin monkey' in common_to_latin)
 
         # map the string 'Squirrel monkey' to the list ['Saimiri sciureus', 'Saimiri oerstedi']
         #**************************************************
@@ -35,7 +35,7 @@ class TestDicts(unittest.TestCase):
         # use ``del`` to remove 'Capuchin monkey'
         #**************************************************
         del common_to_latin['Capuchin monkey']
-        self.assert_('Capuchin monkey' not in common_to_latin)
+        self.assertTrue('Capuchin monkey' not in common_to_latin)
         
 if __name__ == '__main__':
     unittest.main()

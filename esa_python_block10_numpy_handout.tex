@@ -1,12 +1,16 @@
 \documentclass{beamer}
+\usepackage{handoutWithNotes}
+\pgfpagesuselayout{4 on 1 with notes}[a4paper,border shrink=5mm]
 
 \usetheme{default}
 \beamertemplatenavigationsymbolsempty
 
 %http://mikedewar.wordpress.com/2009/02/25/latex-beamer-python-beauty/
-\definecolor{fore}{RGB}{249,242,215}
+%\definecolor{fore}{RGB}{249,242,215}
+\definecolor{fore}{RGB}{51,51,51}
 %{249,242,215}
-\definecolor{back}{RGB}{51,51,51}
+%\definecolor{back}{RGB}{51,51,51}
+\definecolor{back}{RGB}{249,242,215}
 %{RGB}{51,51,51}
 \definecolor{title}{RGB}{230,96,6}
 %{255,0,90}
@@ -23,7 +27,6 @@
 \usepackage{caption}
 \usepackage{listings,bera}
 \usepackage{lipsum}
-\usepackage{url}
 \newcommand\Fontvi{\fontsize{6}{7.2}\selectfont}
 \newcommand\Fontvii{\fontsize{7}{7.5}\selectfont}
 \newcommand\Fontviii{\fontsize{8}{7.8}\selectfont}
@@ -37,7 +40,6 @@
 \lstset{language=Python,
 keywordstyle=\color{keywords},
 commentstyle=\color{comments}\emph}
-\setbeamertemplate{footline}{\scriptsize{\vspace*{0.3cm}\hspace*{0.3cm}\insertframenumber}} 
 
 %\logo{epa-logo-full.jpg}
 
@@ -617,5 +619,6 @@ b
 \url{http://stackoverflow.com/}
 \end{itemize}
 \end{frame}
+
 
 \end{document}
