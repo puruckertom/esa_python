@@ -55,10 +55,10 @@ commentstyle=\color{comments}\emph}
 % items enclosed in square brackets are optional; explanation below
 \title[Title1]{Object-Oriented Programming}
 \subtitle[Title2]{Python for Ecologists}
-\author[etal]{Chance Pascale, Tom Purucker, Tao Hong}
+\author[etal]{Tom Purucker, Chance Pascale, Tao Hong, Jon Flaishans, Marcia Snyder}
 \institute[EPA]{
   Ecological Society of America Workshop\\
-  Portland, OR\\[1ex]
+  Minneapolis, MN\\[1ex]
   \texttt{chancebatwalrus@gmail.com}
 }
 
@@ -200,6 +200,15 @@ class Deck:
       j = random.randrange(i, nCards)
       self.cards[i],self.cards[j]=
            self.cards[j],self.cards[i]
+\end{lstlisting}
+\end{frame}
+           
+
+ \begin{frame}[fragile]
+\frametitle{Deck Class Code (continued)}
+\fontvi
+\begin{lstlisting}
+          
   def removeCard(self, card):
     if card in self.cards:
       self.cards.remove(card)
