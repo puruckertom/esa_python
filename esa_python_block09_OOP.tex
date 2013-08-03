@@ -150,9 +150,9 @@ class Card:
     return (self.rankList[self.rank] + " of " + self.suitList[self.suit])
 
   def __cmp__(self, other):
-	if self.suit > other.suit: return 1
+    if self.suit > other.suit: return 1
     if self.suit < other.suit: return -1
-	if self.rank > other.rank: return 1
+    if self.rank > other.rank: return 1
     if self.rank < other.rank: return -1
 	return 0
 \end{lstlisting}
@@ -322,7 +322,7 @@ class OldMaidHand(Hand):
 \item Each turn for a player is the same(25 turns):
 \begin{enumerate}
 \item Check if hand is empty, if so do nothing
-\item Take neighbor player’s “top” card
+\item Take neighbor player's "top" card
 \item Remove and count number of matches
 \item Shuffle your hand
 \end{enumerate}
