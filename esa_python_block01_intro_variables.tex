@@ -214,8 +214,7 @@ commentstyle=\color{comments}\emph}
 import sys
 sys.version
 import numpy
-import scipy
-import matplotlib
+numpy.__version__
 quit()
 \end{lstlisting} 
 \end{enumerate}
@@ -249,6 +248,18 @@ print "Hello Minneapolis!"
 \frametitle{Run hello.py with IDLE}
 \begin{enumerate}
 \item Open hello.py in scripts directory with File -> Open
+\item Run hello.py with Run -> Run Module or (fn) F5
+  \begin{figure}
+ \includegraphics[scale=0.4]{hello_idle.jpg} 
+ \caption{Result of running hello.py with IDLE}
+ \end{figure}
+ \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Command Line with IDLE}
+\begin{enumerate}
+\item Use the shell window to run commands like at a terminal/cmd prompt
 \item Run hello.py with Run -> Run Module or (fn) F5
   \begin{figure}
  \includegraphics[scale=0.4]{hello_idle.jpg} 

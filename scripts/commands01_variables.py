@@ -1,8 +1,14 @@
+#to start shell
+python
+
 #check for libraries
 import sys
 sys . version
 import numpy
-import scipy
+numpy.__version__
+quit()
+
+#import scipy
 #import matplotlib
 
 #implicitly assign different types to variables
