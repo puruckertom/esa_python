@@ -55,10 +55,10 @@ commentstyle=\color{comments}\emph}
 % items enclosed in square brackets are optional; explanation below
 \title[Title1]{Lists}
 \subtitle[Title2]{Python for Ecologists}
-\author[etal]{Tom Purucker, Tao Hong, Chance Pascale}
+\author[etal]{Jon Flaishans, Tom Purucker, Tao Hong, Marcia Snyder}
 \institute[EPA]{
   Ecological Society of America Workshop\\
-  Portland, OR\\[1ex]
+  Minneapolis, MN\\[1ex]
   \texttt{purucker.tom@gmail.com}
 }
 
@@ -111,12 +111,16 @@ commentstyle=\color{comments}\emph}
 \frametitle{Lists}
 \begin{lstlisting}
 species_names = []
+
 species_names.append("Geospiza fuliginosa") # small
-species_names.append("Geospiza fortis") # medium
-species_names.append("Geospiza magnirostris") # large
-species_names
-species_names.sort() #lists are mutable
-#sorted(species_names) would not change the list
+
+species_names.extend(
+  ['Geospiza fortis','Geospiza magnirostris']
+  ) # medium, large
+  
+sorted(species_names) #produces copy of list, sorted
+
+species_names.sort() #sorts existing list (mutable)
 \end{lstlisting}
 \end{frame}
 
@@ -125,7 +129,9 @@ species_names.sort() #lists are mutable
 \begin{itemize}
 \item Index, Value pairs
 \item Lists can be nested
-\item Tuples can use any immutable type as an index (not just integers)
+\item Slices, Length, and Index
+\item Tuples can use any immutable type as an index \\
+  (not just integers).....more on this later
 \end{itemize}
 \end{frame}
 
@@ -159,13 +165,21 @@ for thing in some_list:
 \begin{frame}[fragile]
 \frametitle{Deleting list elements}
 \begin{itemize}
-\item Getting rid of list elements
+\item Getting rid of list elements:
 \begin{lstlisting}
-some_list
+some_list = ["list item1","list item2","list item3"]
+
 some_list.pop(0)
-some_list
-del some_list[2]
+  # removes last item from list & returns its value
+
+some_list.insert(0,"list item1") # re-add the item
+
+del some_list[2] # must be int (index value)
+
 del some_list
+
+some_list.remove("list item1") 
+  # removes only 1st occurance in list
 \end{lstlisting}
 \end{itemize}
 \end{frame}
@@ -176,12 +190,19 @@ del some_list
 \item Tuples are immutable objects that cannot be altered
 \item Use parentheses () instead of square brackets []
 \begin{lstlisting}
-some_tuple = (23,23.,'Frog',None,True)
+some_tuple = [
+  ("Frog1",23.2),
+  ("Frog1",20.8),
+  ]
 \end{lstlisting}
 \item Tuples and lists can both be sliced
 \begin{lstlisting}
 some_tuple[0:2]
 some_list[0:2]
+\end{lstlisting}
+\item ....and sorted
+\begin{lstlisting}
+sorted(some_tuple, key=lambda grams:grams[1])
 \end{lstlisting}
 \end{itemize}
 \end{frame}
@@ -222,5 +243,6 @@ class TestLists(unittest.TestCase):
         self.assertEquals(warbler_id, 3)
 \end{lstlisting}
 \end{frame}
+
 
 \end{document}
