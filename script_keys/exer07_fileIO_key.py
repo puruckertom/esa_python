@@ -3,29 +3,32 @@
 # 1.2 Output each word on its own line
 # file = open("StateOfTheUnion.txt")
 # for line in file:
-# 	print (line)
+# 	for word in line.split():
+# 		print (word)
 # file.close()
 
 # 2 Sum a file
 # 2.1 Read IntegerFile.txt, which has many numbers on one line.
 # 2.2 Calculate the sum, and the mean. Hint, the int() function
 # turns a string into a number.
-num_all=[]
-file = open("IntegerFile.txt")
-for line in file:
-	for word in line.split():
-		num_all.append(int(word))
-file.close()
-print sum(num_all)
-print sum(num_all).mean()
+# num_all=[]
+# file = open("IntegerFile.txt")
+# for line in file:
+# 	for word in line.split():
+# 		num_all.append(int(word))
+# file.close()
+# # print num_all
+
+# print sum(num_all)
+# print float(sum(num_all))/len(num_all)
 
 # 3 File copier
 # 3.1 Copy http://www.ubertool.org/index.html to a file on your local disk.
-# import urllib2
-# file = urllib2.urlopen('http://www.ubertool.org/index.html')
-# file_read = file.read()
-# print file_read
-# file_out = open('save_out.txt', 'w')
-# file_out.write(file_read)
-# file_out.close()
-# file.close()
+import urllib2
+file = urllib2.urlopen('http://www.ubertool.org/index.html')
+file_read = file.read()
+print file_read
+file_out = open('save_out.txt', 'w')
+file_out.write(file_read)
+file_out.close()
+file.close()
